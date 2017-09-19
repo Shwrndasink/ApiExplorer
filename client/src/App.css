@@ -1,0 +1,73 @@
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.01);
+  align-content: center; }
+
+.header {
+  background: red;
+  height: 10vh;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  flex: 0 0 100%; }
+
+.App .container {
+  flex: 0 1 960px;
+  flex-basis: center;
+  position: relative;
+  margin: 0 auto;
+  height: 100px;
+  padding: 15px;
+  background: #fff;
+  height: 90vh;
+  box-shadow: 2px 2px 2px rgba(0, 0, 255, 0.05), -2px -2px 2px rgba(0, 0, 255, 0.05); }
+  .App .container .requestheaders {
+    margin-top: 35px; }
+    .App .container .requestheaders table {
+      background: rgba(0, 0, 0, 0.01);
+      margin: 15px 0;
+      padding: 0;
+      border-spacing: 0;
+      height: 60px;
+      width: 350px; }
+      .App .container .requestheaders table td {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-size: 14px;
+        font-family: Serif;
+        background: rgba(255, 0, 0, 0.05); }
+  .App .container .requesttype {
+    margin-top: 45px;
+    display: flex; }
+    .App .container .requesttype h3 {
+      flex: 0 0 auto;
+      margin: 8px 0;
+      padding: 0; }
+    .App .container .requesttype select {
+      height: 35px;
+      width: 100px;
+      margin: 0 20px;
+      background: rgba(0, 255, 0, 0.05);
+      flex: 0 0 150px; }
+    .App .container .requesttype input {
+      background: rgba(255, 0, 0, 0.05);
+      font-weight: bold;
+      width: 200px;
+      margin: 0 20px;
+      border: 1px solid #999;
+      border-radius: 2px;
+      height: 35px;
+      padding: 0 15px; }
+  .App .container .requestbody div {
+    margin: 15px 0; }
+    .App .container .requestbody div label {
+      display: block;
+      margin-bottom: 5px; }
+    .App .container .requestbody div input {
+      height: 25px;
+      background: rgba(0, 255, 0, 0.05);
+      width: 350px;
+      border: 1px solid #999; }
