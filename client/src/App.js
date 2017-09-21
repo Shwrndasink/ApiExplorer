@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 import Header from './header/header';
 import RequestType from './requestType/requestType';
@@ -40,11 +41,62 @@ class App extends Component {
   }
 
   sendHTTPReq(username, reponame){
-    return fetch(`https://api.github.com/repos/${username}/${reponame}`)
-    .then(res => res.json())
-    .then(data => this.setState({httpResponse: data}))
-    .catch(()=> `Oops something went wrong`)
-    .finally(console.log('finally'));
+    return fetch(`/users`).then(res => res.json()).then(data => this.setState({httpResponse: data})).catch(()=> `Oops something went wrong`).finally(console.log('finally'));
+  }
+  componentDidMount(){
+    // axios.put('http://localhost:4000/users', {
+      
+    //   'firstName': 'what',
+    //   'lastName': 'last',
+    //   'phone': 'phone'
+      
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+
+    axios({
+      method: 'post',
+      url: 'http;//localhost:4000/users/',
+      ContentType: 'application/json',
+      data: {
+        id: "1",
+        firstName: 'Fred',
+        lastName: 'Flintstone',
+        phone: 'whatever'
+      }
+    }).then(function(response){
+      console.log(response);
+    })
+
+    axios({
+      method: 'get',
+      url: 'http://localhost:4000/users/',
+      ContentType: 'application/json',
+      data: {
+        id: "1",
+        firstName: 'Fred',
+        lastName: 'Flintstone',
+        phone: 'whatever'
+      }
+    }).then(function(response){
+      console.log(response);
+    })
+
+    // axios.post('http://localhost:4000/users', {
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstone',
+    //   phone: 'what'
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
   
   render() {
