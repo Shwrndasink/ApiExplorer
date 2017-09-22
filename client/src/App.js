@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import JSONFormatter from 'json-formatter-js';
 import './App.css';
 import Header from './header/header';
 import RequestType from './requestType/requestType';
@@ -73,9 +74,13 @@ class App extends Component {
         phone: 'whatever'
       }
     }).then(function(response){
+      debugger;
       console.log(response);
-      const responseString = JSON.stringify(response);
-      that.setState({httpResponse: responseString})
+      // let responseString = new JSONFormatter(response).render();
+      let responseString = JSON.stringify(response);
+      // console.log(typeof responseString);
+      console.log(responseString);
+      that.setState({httpResponse: response })
     })
 
     // axios.post('http://localhost:4000/users', {

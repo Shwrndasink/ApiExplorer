@@ -92,8 +92,8 @@ $light-red:rgba(255, 0, 0, 0.05);
     }
   }
   .response {
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    height: auto;
     background: $light-blue;
     padding: 15px;
     box-sizing: border-box;
