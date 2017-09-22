@@ -4,6 +4,13 @@
       "firstName": "first",
       "lastName": "last",
       "phone": "tel"
+    },
+    {
+      "id": "1",
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "phone": "whatever",
+      "http;Id": "localhost:4000"
     }
   ]
 }
