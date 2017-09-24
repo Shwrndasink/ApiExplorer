@@ -24,7 +24,6 @@ class App extends Component {
         id: {
           id: "",
           type: "text"
-
         },
         first: {
           name: '',
@@ -49,34 +48,31 @@ class App extends Component {
   }
   updateId(e){
     this.setState({
-      body: {
-        ...this.state.body.id,
-        id : e.target.value
-      }
+      access: Object.assign({}, this.state.body.id, {
+        id: e.target.value
+      })
     });
+    console.log(this.state);
   }
   updateFirstName(e){
     this.setState({
-      body: {
-        ...this.state.body.first,
+      access: Object.assign({}, this.state.body.first, {
         name: e.target.value
-      }
+      })
     });
   }
   updateLastName(e){
     this.setState({
-      body: {
-        ...this.state.body.last,
+      access: Object.assign({}, this.state.body.last, {
         name: e.target.value
-      }
+      })
     });
   }
   updatePhoneNumber(e){
     this.setState({
-      body: {
-        ...this.state.body.phone,
+      access: Object.assign({}, this.state.body.phone, {
         name: e.target.value
-      }
+      })
     });
   }
 
@@ -84,27 +80,27 @@ class App extends Component {
     this.setState({method: e.target.value});
   }
 
-  sendHTTPReq(username, reponame){
+  sendHTTPReq(){
     console.log(this.state.url);
-    let that = this;
+    let _this = this;
     axios({
       method: this.state.method.toUpperCase(),
       url: this.state.url,
       ContentType: 'application/json',
       data: {
-        id: this.state.body.id.id,
-        firstName: this.state.body.first.name,
-        lastName: this.state.body.last.name,
-        phone: this.state.body.phone.name
+        id: _this.state.body.id.id,
+        firstName: _this.state.body.first.name,
+        lastName: _this.state.body.last.name,
+        phone: _this.state.body.phone.name
       }
     }).then(function(response){
       let responseString = JSON.stringify(response);
       console.log(responseString);
-      that.setState({httpResponse: response })
+      _this.setState({httpResponse: response })
     });
   }
   componentDidMount(){
-    const that = this;
+    const _this = this;
     axios({
       method: 'get',
       url: 'http://localhost:4000/users/',
@@ -113,7 +109,7 @@ class App extends Component {
       console.log(response);
       let responseString = JSON.stringify(response);
       console.log(responseString);
-      that.setState({httpResponse: response })
+      _this.setState({httpResponse: response })
     });
   }
   
