@@ -54,7 +54,6 @@ class App extends Component {
         id : e.target.value
       }
     });
-    console.log(this.state);
   }
   updateFirstName(e){
     this.setState({
@@ -63,7 +62,6 @@ class App extends Component {
         name: e.target.value
       }
     });
-    console.log(this.state);
   }
   updateLastName(e){
     this.setState({
@@ -72,7 +70,6 @@ class App extends Component {
         name: e.target.value
       }
     });
-    console.log(this.state);
   }
   updatePhoneNumber(e){
     this.setState({
@@ -81,7 +78,6 @@ class App extends Component {
         name: e.target.value
       }
     });
-    console.log(this.state);
   }
 
   updateHTTPMethod(e) {
