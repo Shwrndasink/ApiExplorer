@@ -100,4 +100,14 @@ $light-red:rgba(255, 0, 0, 0.05);
     font-size: 14px;
     border:1px solid #999;
   }
+  .sendRequest {
+    button {
+      background: $light-blue;
+      height:35px;
+      width:120px;
+      border: 1px solid #999;
+      border-radius: 3px;
+      margin:10px 0;
+    }
+  }
 }

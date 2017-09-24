@@ -7,12 +7,13 @@ import RequestType from './requestType/requestType';
 import RequestHeaders from './requestHeaders/requestHeaders';
 import RequestBody from './requestBody/requestBody';
 import Response from './response/response';
+import SendRequestBtn from './sendReqBtn/sendReqBtn';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      url: 'https://myservice.com/users',
+      url: 'https://localhost:4000/users',
       method: 'POST',
       headers: {
         Authorization: 'AUTHCODE',
@@ -48,18 +49,22 @@ class App extends Component {
   }
 
   sendHTTPReq(username, reponame){
+    console.log(this.state.url);
+    let that = this;
     axios({
-      method: 'post',
-      url: 'http;//localhost:4000/users/',
+      method: this.state.method.toUpperCase(),
+      url: this.state.url,
       ContentType: 'application/json',
       data: {
-        id: "1",
-        firstName: 'Fred',
-        lastName: 'Flintstone',
-        phone: 'whatever'
+        id: this.state.body[0].id,
+        firstName: this.state.body[1].name,
+        lastName: this.state.body[2].name,
+        phone: this.state.body[3].name
       }
     }).then(function(response){
-      console.log(response);
+      let responseString = JSON.stringify(response);
+      console.log(responseString);
+      that.setState({httpResponse: response })
     });
   }
   componentDidMount(){
@@ -74,26 +79,11 @@ class App extends Component {
         phone: 'whatever'
       }
     }).then(function(response){
-      debugger;
       console.log(response);
-      // let responseString = new JSONFormatter(response).render();
       let responseString = JSON.stringify(response);
-      // console.log(typeof responseString);
       console.log(responseString);
       that.setState({httpResponse: response })
-    })
-
-    // axios.post('http://localhost:4000/users', {
-    //   firstName: 'Fred',
-    //   lastName: 'Flintstone',
-    //   phone: 'what'
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
+    });
   }
   
   render() {
@@ -103,9 +93,10 @@ class App extends Component {
         <div className="container">
           <p>Welcome to the Api Explorer. You can update the values of your request and see what the updated response will be.</p>
           <div>
-            <RequestType updateMethod={this.updateHTTPMethod} value={this.state.method} />
+            <RequestType updateMethod={this.updateHTTPMethod} value={this.state.method} url={this.state.url} />
             <RequestHeaders Authorization={['Authorization', this.state.headers.Authorization]} ContentType={['ContentType', this.state.headers.ContentType]}/>
             <RequestBody />
+            <SendRequestBtn request={this.sendHTTPReq}/>
             <Response response={this.state.httpResponse} />
           </div>
         </div>

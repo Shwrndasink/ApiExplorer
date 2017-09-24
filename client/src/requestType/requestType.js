@@ -11,7 +11,7 @@ export default function RequestType(props) {
                 <option value="DELETE">Delete</option>
             </select>
             <h3>URL:</h3>
-            <input type="text" value="https://myservice.com/users" readOnly/>
+            <input type="text" value={props.url} readOnly/>
         </div>
     )
 }
