@@ -72,12 +72,7 @@ class App extends Component {
     axios({
       method: 'get',
       url: 'http://localhost:4000/users/',
-      ContentType: 'application/json',
-      data: {
-        firstName: 'Fred',
-        lastName: 'Flintstone',
-        phone: 'whatever'
-      }
+      ContentType: 'application/json'
     }).then(function(response){
       console.log(response);
       let responseString = JSON.stringify(response);
@@ -91,7 +86,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
-          <p>Welcome to the Api Explorer. You can update the values of your request and see what the updated response will be.</p>
+          <p>Welcome to the Api Explorer. You can enter new user values and HTPP Request type and see what the updated response will be.</p>
           <div>
             <RequestType updateMethod={this.updateHTTPMethod} value={this.state.method} url={this.state.url} />
             <RequestHeaders Authorization={['Authorization', this.state.headers.Authorization]} ContentType={['ContentType', this.state.headers.ContentType]}/>
