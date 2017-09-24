@@ -20,28 +20,68 @@ class App extends Component {
         ContentType: 'application/json'
       },
       httpResponse: '',
-      body: [
-        {
-          id: "1",
+      body: {
+        id: {
+          id: "",
           type: "text"
 
         },
-        {
-          name: 'first',
+        first: {
+          name: '',
           type: 'text'
         },
-        {
-          name: 'last',
+        last: {
+          name: '',
           type: 'text'
         },
-        {
-          name: 'phone',
+        phone: {
+          name: '',
           type: 'tel'
         }
-      ]
+      }
     }
     this.updateHTTPMethod = this.updateHTTPMethod.bind(this);
     this.sendHTTPReq = this.sendHTTPReq.bind(this);
+    this.updateId = this.updateId.bind(this);
+    this.updateFirstName = this.updateFirstName.bind(this);
+    this.updateLastName = this.updateLastName.bind(this);
+    this.updatePhoneNumber = this.updatePhoneNumber.bind(this);
+  }
+  updateId(e){
+    this.setState({
+      body: {
+        ...this.state.body.id,
+        id : e.target.value
+      }
+    });
+    console.log(this.state);
+  }
+  updateFirstName(e){
+    this.setState({
+      body: {
+        ...this.state.body.first,
+        name: e.target.value
+      }
+    });
+    console.log(this.state);
+  }
+  updateLastName(e){
+    this.setState({
+      body: {
+        ...this.state.body.last,
+        name: e.target.value
+      }
+    });
+    console.log(this.state);
+  }
+  updatePhoneNumber(e){
+    this.setState({
+      body: {
+        ...this.state.body.phone,
+        name: e.target.value
+      }
+    });
+    console.log(this.state);
   }
 
   updateHTTPMethod(e) {
@@ -56,10 +96,10 @@ class App extends Component {
       url: this.state.url,
       ContentType: 'application/json',
       data: {
-        id: this.state.body[0].id,
-        firstName: this.state.body[1].name,
-        lastName: this.state.body[2].name,
-        phone: this.state.body[3].name
+        id: this.state.body.id.id,
+        firstName: this.state.body.first.name,
+        lastName: this.state.body.last.name,
+        phone: this.state.body.phone.name
       }
     }).then(function(response){
       let responseString = JSON.stringify(response);
@@ -90,7 +130,7 @@ class App extends Component {
           <div>
             <RequestType updateMethod={this.updateHTTPMethod} value={this.state.method} url={this.state.url} />
             <RequestHeaders Authorization={['Authorization', this.state.headers.Authorization]} ContentType={['ContentType', this.state.headers.ContentType]}/>
-            <RequestBody />
+            <RequestBody id={this.updateId} first={this.updateFirstName} last={this.updateLastName} phone={this.updatePhoneNumber} />
             <SendRequestBtn request={this.sendHTTPReq}/>
             <Response response={this.state.httpResponse} />
           </div>

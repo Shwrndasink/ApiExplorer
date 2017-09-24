@@ -20,7 +20,7 @@
   height: 100px;
   padding: 15px;
   background: #fff;
-  height: 180vh;
+  height: auto;
   box-shadow: 2px 2px 2px rgba(0, 0, 255, 0.05), -2px -2px 2px rgba(0, 0, 255, 0.05); }
   .App .container .requestheaders {
     margin-top: 35px; }
