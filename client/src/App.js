@@ -13,7 +13,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      url: 'https://localhost:4000/users',
+      url: 'http://localhost:4000/users',
       method: 'POST',
       headers: {
         Authorization: 'AUTHCODE',
