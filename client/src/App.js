@@ -46,38 +46,26 @@ class App extends Component {
     this.updateLastName = this.updateLastName.bind(this);
     this.updatePhoneNumber = this.updatePhoneNumber.bind(this);
   }
-  updateId(e){
-    this.setState({
-      access: Object.assign({}, this.state.body.id, {
-        id: e.target.value
-      })
-    });
-    console.log(this.state);
+  updateId = (e) => {
+    this.state.body.id.id = e.target.value;
   }
   updateFirstName(e){
-    this.setState({
-      access: Object.assign({}, this.state.body.first, {
-        name: e.target.value
-      })
-    });
+    this.state.body.first.name = e.target.value;
   }
   updateLastName(e){
-    this.setState({
-      access: Object.assign({}, this.state.body.last, {
-        name: e.target.value
-      })
-    });
+    this.state.body.last.name = e.target.value;
   }
   updatePhoneNumber(e){
-    this.setState({
-      access: Object.assign({}, this.state.body.phone, {
-        name: e.target.value
-      })
-    });
+    this.state.body.phone.name = e.target.value;
   }
 
   updateHTTPMethod(e) {
     this.setState({method: e.target.value});
+    if(e.target.value === 'PUT' || e.target.value === 'DELETE'){
+      this.setState({ url: `${this.state.url}/${this.state.body.id.id}`});
+    } else {
+      this.setState({ url: `http://localhost:4000/users`});
+    }
   }
 
   sendHTTPReq(){
