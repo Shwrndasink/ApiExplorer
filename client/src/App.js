@@ -97,6 +97,7 @@ class App extends Component {
       console.log(response);
       let responseString = JSON.stringify(response);
       console.log(responseString);
+
       _this.setState({httpResponse: response })
     });
   }
